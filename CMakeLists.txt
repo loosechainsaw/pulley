@@ -1,0 +1,14 @@
+cmake_minimum_required(VERSION 3.12)
+project(pulley)
+
+set(CMAKE_CXX_STANDARD 14)
+set(HEADERS
+        include/pulley/utitlities/null_type.hpp
+        include/pulley/algorithms/take.hpp
+        include/pulley/algorithms/transform.hpp
+        include/pulley/algorithms/front.hpp
+        include/pulley/algorithms/back.hpp
+        include/pulley/algorithms/types/front.hpp include/pulley/algorithms/types/transform.hpp include/pulley/algorithms/types/back.hpp include/pulley/algorithms/tail.hpp)
+
+add_executable(pulley main.cpp ${HEADERS})
+target_include_directories(pulley PUBLIC include)
