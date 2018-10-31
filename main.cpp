@@ -29,5 +29,4 @@ int main()
     constexpr auto tt1 = pulley::algorithms::remove<float>(std::make_tuple(1.0f, 1, 1.0f, 1));
     constexpr auto tt2 = pulley::algorithms::remove<float>(std::make_tuple(1, 1));
     
-    printer<decltype(tt1)> pq;
 }
