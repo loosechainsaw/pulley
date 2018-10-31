@@ -3,10 +3,7 @@
 #include <pulley/algorithms/transform.hpp>
 #include <pulley/algorithms/front.hpp>
 #include <pulley/algorithms/back.hpp>
-
-
-template<typename P>
-struct type_printer;
+#include <pulley/algorithms/remove.hpp>
 
 struct transformer
 {
@@ -17,6 +14,9 @@ struct transformer
     }
 };
 
+template <typename T>
+struct printer;
+
 int main()
 {
     constexpr std::tuple<int, int, int> t {1, 2, 3};
@@ -24,4 +24,10 @@ int main()
     constexpr auto b = pulley::algorithms::back(t);
     constexpr auto tr = pulley::algorithms::transform(t, transformer {});
     constexpr auto ta = pulley::algorithms::take<2>(t);
+    constexpr auto rm = pulley::algorithms::remove<float>(std::tuple<>{});
+    constexpr auto tt = pulley::algorithms::remove<float>(std::make_tuple(1));
+    constexpr auto tt1 = pulley::algorithms::remove<float>(std::make_tuple(1.0f, 1, 1.0f, 1));
+    constexpr auto tt2 = pulley::algorithms::remove<float>(std::make_tuple(1, 1));
+    
+    printer<decltype(tt1)> pq;
 }

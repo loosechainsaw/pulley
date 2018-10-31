@@ -8,7 +8,11 @@ set(HEADERS
         include/pulley/algorithms/transform.hpp
         include/pulley/algorithms/front.hpp
         include/pulley/algorithms/back.hpp
-        include/pulley/algorithms/types/front.hpp include/pulley/algorithms/types/transform.hpp include/pulley/algorithms/types/back.hpp include/pulley/algorithms/tail.hpp)
+        include/pulley/algorithms/types/front.hpp
+        include/pulley/algorithms/types/transform.hpp
+        include/pulley/algorithms/types/back.hpp
+        include/pulley/algorithms/tail.hpp
+        include/pulley/algorithms/remove.hpp include/pulley/algorithms/types/tail_empty.hpp include/pulley/algorithms/types/tail_size.hpp)
 
 add_executable(pulley main.cpp ${HEADERS})
 target_include_directories(pulley PUBLIC include)
