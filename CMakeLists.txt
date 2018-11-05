@@ -1,7 +1,11 @@
 cmake_minimum_required(VERSION 3.12)
 project(pulley)
 
-set(CMAKE_CXX_STANDARD 14)
+add_subdirectory(assertions)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
 set(HEADERS
         include/pulley/utitlities/null_type.hpp
         include/pulley/algorithms/take.hpp
@@ -22,4 +26,3 @@ set(HEADERS
 add_library(pulley assertions/main.cpp ${HEADERS})
 target_include_directories(pulley PUBLIC include)
 
-add_subdirectory(assertions)
