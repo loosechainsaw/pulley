@@ -8,6 +8,7 @@
 #include <pulley/algorithms/tail.hpp>
 #include <pulley/algorithms/count_if.hpp>
 #include <pulley/algorithms/all_of.hpp>
+#include <pulley/algorithms/find.hpp>
 
 template<typename T>
 struct printer;
@@ -36,6 +37,10 @@ int main()
     constexpr auto t7 = remove<double>(t1);
     static_assert(std::is_same<decltype(t7), const std::tuple<int, int, int>>::value);
     
+    constexpr auto t8 = pulley::algorithms::find<int>(t1);
+    static_assert(t8 == 2);
     
+    constexpr auto t9 = pulley::algorithms::find<float>(t1);
+    static_assert(std::is_same_v<decltype(t9), const pulley::utilities::null_type>);
     
 }
