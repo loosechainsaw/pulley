@@ -5,6 +5,7 @@
 #include <pulley/algorithms/back.hpp>
 #include <pulley/algorithms/remove.hpp>
 #include <pulley/algorithms/skip.hpp>
+#include <pulley/algorithms/tail.hpp>
 
 struct transformer
 {
@@ -30,7 +31,8 @@ int main()
     constexpr auto tt1 = pulley::algorithms::remove<float>(std::make_tuple(1.0f, 1, 1.0f, 1));
     constexpr auto tt2 = pulley::algorithms::remove<float>(std::make_tuple(1, 1));
     constexpr auto tt3 = pulley::algorithms::skip<3>(std::make_tuple(1, 1, 1,1.0));
+    constexpr auto tai = pulley::algorithms::tail(std::make_tuple(1.0, 1, 1,1.0));
     
-    printer<decltype(tt3)> pp;
+    printer<decltype(tai)> pp;
     
 }
