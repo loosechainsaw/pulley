@@ -3,7 +3,7 @@ project(pulley)
 
 add_subdirectory(assertions)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(HEADERS
@@ -23,6 +23,6 @@ set(HEADERS
         include/pulley/algorithms/count_if.hpp
         include/pulley/algorithms/all_of.hpp)
 
-add_library(pulley assertions/main.cpp ${HEADERS})
-target_include_directories(pulley PUBLIC include)
+add_library(pulley INTERFACE)
+target_include_directories(pulley INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
