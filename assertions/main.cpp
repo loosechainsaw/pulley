@@ -9,6 +9,7 @@
 #include <pulley/algorithms/count_if.hpp>
 #include <pulley/algorithms/all_of.hpp>
 #include <pulley/algorithms/find.hpp>
+#include <pulley/algorithms/for_each.hpp>
 
 template<typename T>
 struct printer;
@@ -43,4 +44,9 @@ int main()
     constexpr auto t9 = pulley::algorithms::find<float>(t1);
     static_assert(std::is_same_v<decltype(t9), const pulley::utilities::null_type>);
     
+    pulley::algorithms::for_each(t1, [](auto const& arg){
+    
+    });
+    
 }
+

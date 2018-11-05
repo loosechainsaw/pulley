@@ -1,5 +1,5 @@
-#ifndef PROJECT_FIND_HPP
-#define PROJECT_FIND_HPP
+#ifndef PULLEY_FIND_HPP
+#define PULLEY_FIND_HPP
 
 #include <pulley/utitlities/null_type.hpp>
 #include <pulley/algorithms/tail.hpp>
