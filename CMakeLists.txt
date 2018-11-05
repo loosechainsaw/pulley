@@ -12,7 +12,14 @@ set(HEADERS
         include/pulley/algorithms/types/transform.hpp
         include/pulley/algorithms/types/back.hpp
         include/pulley/algorithms/tail.hpp
-        include/pulley/algorithms/remove.hpp include/pulley/algorithms/types/tail_empty.hpp include/pulley/algorithms/types/tail_size.hpp include/pulley/algorithms/skip.hpp include/pulley/algorithms/count_if.hpp)
+        include/pulley/algorithms/remove.hpp
+        include/pulley/algorithms/types/tail_empty.hpp
+        include/pulley/algorithms/types/tail_size.hpp
+        include/pulley/algorithms/skip.hpp
+        include/pulley/algorithms/count_if.hpp
+        include/pulley/algorithms/all_of.hpp)
 
-add_executable(pulley main.cpp ${HEADERS})
+add_library(pulley assertions/main.cpp ${HEADERS})
 target_include_directories(pulley PUBLIC include)
+
+add_subdirectory(assertions)
