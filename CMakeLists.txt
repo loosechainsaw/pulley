@@ -23,6 +23,7 @@ set(HEADERS
         include/pulley/algorithms/count_if.hpp
         include/pulley/algorithms/find.hpp
         include/pulley/algorithms/for_each.hpp
+        include/pulley/algorithms/adjacent_elements_for_each.hpp
         include/pulley/algorithms/all_of.hpp)
 
 add_library(pulley INTERFACE )
