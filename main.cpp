@@ -6,6 +6,7 @@
 #include <pulley/algorithms/remove.hpp>
 #include <pulley/algorithms/skip.hpp>
 #include <pulley/algorithms/tail.hpp>
+#include <pulley/algorithms/count_if.hpp>
 
 struct transformer
 {
@@ -13,6 +14,14 @@ struct transformer
     constexpr auto operator()(T const &a)
     {
         return a + 1;
+    }
+};
+struct greater_than_2
+{
+    template<typename T>
+    constexpr auto operator()(T const &a)
+    {
+        return a > 2;
     }
 };
 
@@ -32,7 +41,10 @@ int main()
     constexpr auto tt2 = pulley::algorithms::remove<float>(std::make_tuple(1, 1));
     constexpr auto tt3 = pulley::algorithms::skip<3>(std::make_tuple(1, 1, 1,1.0));
     constexpr auto tai = pulley::algorithms::tail(std::make_tuple(1.0, 1, 1,1.0));
+    constexpr auto cif = pulley::algorithms::count_if(std::make_tuple(1.0, 3, 1,4.0), greater_than_2{});
     
-    printer<decltype(tai)> pp;
+    std::cout << cif << std::endl;
+    
+    //printer<decltype(cif)> pp;
     
 }
