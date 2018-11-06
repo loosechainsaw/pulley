@@ -12,6 +12,7 @@
 #include <pulley/algorithms/for_each.hpp>
 #include <pulley/algorithms/adjacent_elements_for_each.hpp>
 #include <pulley/algorithms/adjacent_elements_for_each_if.hpp>
+#include <pulley/algorithms/any_pairs.hpp>
 
 template<typename T>
 struct printer;
@@ -64,5 +65,23 @@ int main()
             std::cout << "[" << arg1 << "," << arg2 << "]" << std::endl;
         }
     );
+
+    constexpr auto t10 = pulley::algorithms::any_pairs(t1, [](auto a, auto b){
+        return std::is_same_v<decltype(a), double> && std::is_same_v<decltype(b), int>;
+    });
+
+    static_assert(t10);
+
+    constexpr auto t11 = pulley::algorithms::any_pairs(t1, [](auto a, auto b){
+        return std::is_same_v<decltype(a), float> && std::is_same_v<decltype(b), int>;
+    });
+
+    static_assert(!t11);
+
+    constexpr auto t12 = pulley::algorithms::any_pairs(t1, [](auto a, auto b){
+        return std::is_same_v<decltype(a), int> && std::is_same_v<decltype(b), int>;
+    });
+
+    static_assert(t12);
 }
 
