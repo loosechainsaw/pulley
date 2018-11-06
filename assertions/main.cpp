@@ -11,6 +11,7 @@
 #include <pulley/algorithms/find.hpp>
 #include <pulley/algorithms/for_each.hpp>
 #include <pulley/algorithms/adjacent_elements_for_each.hpp>
+#include <pulley/algorithms/adjacent_elements_for_each_if.hpp>
 
 template<typename T>
 struct printer;
@@ -52,5 +53,16 @@ int main()
     pulley::algorithms::adjacent_elements_for_each(t1, [](auto const& arg1, auto const& arg2){
         std::cout << "[" << arg1 << "," << arg2 << "]" << std::endl;
     });
+
+    pulley::algorithms::adjacent_elements_for_each_if(t1,
+        [](auto const& arg1, auto const& arg2){
+            return std::is_same_v<double, std::decay_t<decltype(arg1)>> &&
+                   std::is_same_v<int, std::decay_t<decltype(arg2)>> ;
+        },
+        [](auto const& arg1, auto const& arg2)
+        {
+            std::cout << "[" << arg1 << "," << arg2 << "]" << std::endl;
+        }
+    );
 }
 
