@@ -12,7 +12,7 @@ namespace pulley
         namespace detail
         {
 
-#if defined(__GNUC__) && (__GNUC___ >= 7)
+#if defined(__GNUC__) && (__GNUC___ > 7 || (__GNUC__ == 7 && __GNUC_MINOR__ >= 1))
             template<typename... Ts, size_t... Is, typename F>
             constexpr void for_each(std::tuple<Ts...> const& t, std::index_sequence<Is...> is, F&& f) {
                 std::initializer_list<int> i{(f(std::get<Is>(t)), 0)... };
@@ -61,7 +61,7 @@ namespace pulley
         template<typename... Ts, typename F>
         constexpr void for_each(std::tuple<Ts...> const &t, F &&f)
         {
-#if defined(__GNUC__) && (__GNUC___ >= 7)
+#if defined(__GNUC__) && (__GNUC___ > 7 || (__GNUC__ == 7 && __GNUC_MINOR__ >= 1))
             detail::for_each(t, std::make_index_sequence<std::tuple_size<std::tuple<Ts...>>::value>{}, std::forward<F>(f));
 #else
             detail::for_each<std::decay_t <decltype(t)>, F>::apply(t, f);
