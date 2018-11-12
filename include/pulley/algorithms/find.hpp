@@ -23,7 +23,14 @@ namespace pulley {
                     return pulley::utilities::null_type{};
                 };
             };
-        
+
+            template<typename T>
+            struct find<T, std::tuple<T>>{
+                constexpr static auto apply(std::tuple<T> t){
+                    return std::get<0>(t);
+                };
+            };
+
             template<typename T, typename... Ts>
             struct find<T, std::tuple<T, Ts...>>{
                 constexpr static auto apply(std::tuple<T,Ts...> t){
